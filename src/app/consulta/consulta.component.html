@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>Data</title>
+</head>
+<body>
+    <div class="example-header mat-elevation-z8">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" 
+          placeholder="Escriba algo para filtrar">
+        </mat-form-field>
+    </div>
+    <br>
+    <div class="example-container mat-elevation-z8">
+    </div>
+    <div>
+        <a class="waves-effect waves-light btn" [routerLink]="'/'">Atrás</a>
+    </div>
+    
+    <div class="example-container mat-elevation-z8">
+        <mat-table [dataSource]="dataSource" matSort>
+          <ng-container matColumnDef="postId">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> postId</mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.postId}} </mat-cell>
+          </ng-container>
+    
+          <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> id</mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+          </ng-container>
+    
+          <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> name </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="email">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> email</mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.email}} </mat-cell>
+          </ng-container>
+    
+           <ng-container matColumnDef="body">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> body </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.body}} </mat-cell>
+          </ng-container>
+    
+          <mat-header-row *matHeaderRowDef="displayedColumns" class="encabezado"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html> 
